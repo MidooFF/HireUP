@@ -2,8 +2,11 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="home section-padding pt-[80px]">
-      <div className="flex justify-between items-end gap-[90px]">
+    <div className="home section-padding pt-[80px] relative">
+      <div
+        className="flex justify-between items-end gap-[90px] max-lg:flex-col
+       max-lg:items-start mt-[80px] max-lg:gap-[20px]"
+      >
         <div className="flex-1 popup">
           <p>
             <span className="text-[var(--main-color)] font-bold mr-[5px]">

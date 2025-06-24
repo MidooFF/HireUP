@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-    --main-color: rgb(68, 63, 222)
+    --main-color: rgb(68, 63, 222);
+    --section-padding: 5%;
 }
 
 @layer components {
@@ -31,6 +32,55 @@
     }
     .popup-2 {
         animation-delay: 200ms;
+    }
+
+    .burger-icon {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        transition: 300ms;
+
+    }
+    .burger-icon div {
+        width: 50%;
+        height: 2px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        border-radius: 10px;
+        transition: 300ms;
+    }
+    .burger-icon div:first-child {
+        top: 12px;
+    }
+
+    .burger-icon div:nth-child(2) {
+        top:50%;
+        transform: translate(-50%, -50%);
+    }
+    .burger-icon div:last-child {
+        bottom: 12px;
+    }
+    .burger-icon.on {
+        background-color: var(--main-color);
+    }
+    .burger-icon.on div {
+        background-color: white;
+    }
+    .links.on {
+        bottom: 0;
+    }
+    .links.off {
+        bottom: 500%
+    }
+
+    @media(max-width: 1024px) {
+        .navbar .links {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 9px;
+        }
     }
 }
 
