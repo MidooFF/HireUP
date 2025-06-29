@@ -28,14 +28,21 @@ const reducer = (state: StateType, action: ActionType) => {
   }
 };
 
-export default function useFetch(url: string) {
+export default function useFetch() {
   const [state, dispatch] = useReducer(reducer, initState);
 
+  const options = {
+    method: "GET",
+    url: "https://www.arbeitnow.com/api/job-board-api",
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
-        dispatch({ type: "FETCH_SUCCESS", payload: response.data.data });
+        const response = await axios.request(options);
+        dispatch({
+          type: "FETCH_SUCCESS",
+          payload: response.data.data,
+        });
       } catch (error) {
         dispatch({
           type: "FETCH_FAIL",
@@ -44,7 +51,7 @@ export default function useFetch(url: string) {
       }
     };
     fetchData();
-  }, [url]);
+  }, []);
 
   return state;
 }
