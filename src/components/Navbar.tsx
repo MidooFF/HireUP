@@ -6,7 +6,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   return (
     <div
-      className="navbar flex items-center pl-[var(--section-padding)] 
+      className="navbar shadow-1 flex items-center pl-[var(--section-padding)] 
     pr-[var(--section-padding)] py-[15px] fixed w-full z-10 bg-white"
     >
       <div className="bg-white w-full h-full absolute top-0 left-0 z-15 hidden max-lg:block"></div>
@@ -87,8 +87,10 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+
     </div>
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

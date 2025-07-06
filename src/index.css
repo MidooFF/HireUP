@@ -13,8 +13,12 @@
         padding-right: 5%;
     }
 
-    .navbar {
+    .shadow-1 {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;    }
+    .shadow-2 {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+        
     .navbar .logo {
         svg {
            color: var(--main-color);
@@ -109,6 +113,17 @@
         animation-duration: 1000ms;
         animation-iteration-count: infinite;
     }
+    .move-left {
+        animation-name: move-left;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+    }
+    .move-right {
+        animation-name: move-right;
+        animation-duration: 300ms;
+        animation-fill-mode: both;
+
+    }
     @media(max-width: 1024px) {
         .navbar .links {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 9px;
@@ -135,5 +150,23 @@
     to {
         left: 359px;
     bottom: 115px;
+    }
+}
+
+@keyframes move-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(20.6%)
+    }
+}
+
+@keyframes move-right {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-20.6%)
     }
 }

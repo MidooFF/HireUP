@@ -1,20 +1,81 @@
-import React from "react";
+import React, { useEffect, useState, useCallback, useContext } from "react";
 import { CiSearch } from "react-icons/ci";
 import useFetch from "../hooks/useFetch";
 import useRandom from "../hooks/useRandom";
+import { FetchContext } from "../App";
 
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { CiLocationOn } from "react-icons/ci";
 import { TbCoins } from "react-icons/tb";
 
 const Home = () => {
-  const { loading, data, error } = useFetch();
-  const { randomCompanies, getRandomImage } = useRandom(6);
-  const renderCompanies = (index: number) => {
+  const DataContext = useContext(FetchContext);
+  const { loading, data, error } = DataContext;
+  const { randomCompanies, randomCompanyImages } = useRandom(6);
+  const renderCompanies = useCallback((index: number) => {
     for (let i = 0; i < randomCompanies.length; i++) {
       return randomCompanies.includes(index);
     }
+  }, []);
+
+  const [randomCompType, setRandomCompType] = useState(
+    Math.floor(Math.random() * 4)
+  );
+  const [randomCompTime, setRandomCompTime] = useState(
+    Math.floor(Math.random() * 4)
+  );
+
+  const [exiCompanies, setExiCompanies] = useState([
+    { name: "Facebook", emp: 3000, img: "./../../public/company-3.svg" },
+    { name: "Dribble", emp: 65, img: "./../../public/company-1.svg" },
+    { name: "Paypal", emp: 6000, img: "./../../public/company-4.svg" },
+    { name: "Spotify", emp: 2000, img: "./../../public/company-5.svg" },
+    { name: "Slack", emp: 2000, img: "./../../public/company-6.svg" },
+  ]);
+
+  const exiCompLeft = () => {
+    setMoveExiCompLeft(true);
   };
-  console.log(loading, data, error);
+  const exiCompRight = () => {
+    setMoveExiCompRight(true);
+  };
+  const [moveExiCompLeft, setMoveExiCompLeft] = useState(false);
+
+  // Moves the first company to the end of the array
+  const [moveExiCompRight, setMoveExiCompRight] = useState(false);
+
+  useEffect(() => {
+    if (moveExiCompLeft) {
+      let timeout = setTimeout(() => {
+        setExiCompanies((prevCompanies) => {
+          if (prevCompanies.length === 0) return prevCompanies;
+          const lastCompany = prevCompanies[prevCompanies.length - 1];
+          const newCompanies = [
+            lastCompany,
+            ...prevCompanies.slice(0, prevCompanies.length - 1),
+          ];
+          setMoveExiCompLeft(false);
+
+          return newCompanies;
+        });
+      }, 300);
+    }
+  }, [moveExiCompLeft]);
+
+  useEffect(() => {
+    if (moveExiCompRight) {
+      let timeout = setTimeout(() => {
+        setExiCompanies((prevCompanies) => {
+          if (prevCompanies.length === 0) return prevCompanies;
+          const [firstCompany, ...remainingCompanies] = prevCompanies;
+          setMoveExiCompRight(false);
+
+          return [...remainingCompanies, firstCompany];
+        });
+      }, 300);
+    }
+  }, [moveExiCompRight]);
   return (
     <div className="home section-padding pt-[80px] relative">
       <div
@@ -281,7 +342,8 @@ const Home = () => {
               {renderCompanies(index) ? (
                 <div
                   key={index}
-                  className="border-solid border-[1px] border-[var(--grey-color)] p-[20px]"
+                  className="border-solid border-[1px] border-[var(--grey-color)] p-[20px]
+                  hover:border-[var(--text-grey-color)] duration-300 shadow-2"
                 >
                   <div className="flex items-start">
                     <div
@@ -290,7 +352,9 @@ const Home = () => {
                     >
                       {" "}
                       <img
-                        src={`../../public/company-${getRandomImage()}.svg`}
+                        src={`../../public/company-${
+                          randomCompanyImages[Math.floor(index / 16)]
+                        }.svg`}
                         className="
                       w-[70%] object-cover"
                       />
@@ -304,11 +368,11 @@ const Home = () => {
                   </div>
                   <h2 className="my-[20px] font-bold">{company.tags[0]}</h2>
                   <span className="text-blue-800 bg-[#0000ff1c] px-[5px] py-[2px] rounded-[4px]">
-                    {Math.floor(Math.random() * 4) === 0
+                    {randomCompType === 0
                       ? "Marketing"
-                      : Math.floor(Math.random() * 4) === 1
+                      : randomCompType === 1
                       ? "Technology"
-                      : Math.floor(Math.random() * 4) === 2
+                      : randomCompType === 2
                       ? "Business"
                       : "Design"}
                   </span>
@@ -316,11 +380,11 @@ const Home = () => {
                     className="text-orange-500 bg-[#ffa50036] px-[5px] py-[2px] rounded-[4px]
                  ml-[10px]"
                   >
-                    {Math.floor(Math.random() * 4) === 0
+                    {randomCompTime === 0
                       ? "Part Time"
-                      : Math.floor(Math.random() * 4) === 1
+                      : randomCompTime === 1
                       ? "Full Time"
-                      : Math.floor(Math.random() * 4) === 2
+                      : randomCompTime === 2
                       ? "Contract"
                       : "Casual"}
                   </span>
@@ -338,6 +402,74 @@ const Home = () => {
             </>
           ))
         )}
+      </div>
+
+      <div className="mt-[120px]">
+        <h2 className="text-[40px] font-bold mb-[10px]">
+          Work with exciting companies
+        </h2>
+        <div className="flex items-center mb-[40px] max-md:flex-col max-md:items-start">
+          <p className="text-[var(--text-grey-color)] flex-4">
+            Discover more than 1,600 open positions
+          </p>
+          <div className="flex-2 flex justify-end max-md:mt-[15px]">
+            <div
+              onClick={exiCompLeft}
+              className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+            >
+              <FaArrowLeftLong />
+            </div>
+            <div
+              onClick={exiCompRight}
+              className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px] ml-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+            >
+              <FaArrowRightLong />
+            </div>
+          </div>
+        </div>
+        <div
+          className={`w-[170%] max-lg:w-[260%] max-md:w-[550%] gap-[3%] flex translate-x-[-20%] max-lg:translate-x-[0 ${
+            moveExiCompLeft ? " move-left" : ""
+          } ${moveExiCompRight ? " move-right" : ""}`}
+        >
+          {exiCompanies.map(({ name, emp, img }, index) => {
+            return (
+              <div
+                key={index}
+                className={`w-[30%] max-lg:w-[50%] max-md:w-[100%] 
+                  inline-block "border-solid border-[1px] 
+                  border-[var(--grey-color)] p-[20px] hover:border-[var(--text-grey-color)]
+                  duration-300 shadow-2`}
+              >
+                <div className="flex items-center">
+                  <div
+                    className="w-[60px] h-[60px] flex justify-center items-center
+                   border-solid border-[1px] border-[var(--grey-color)] mr-[15px]"
+                  >
+                    {" "}
+                    <img
+                      src={img}
+                      className="
+                      w-[70%] object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold">{name}</h3>
+                </div>
+                <p className="mt-[15px] text-[var(--text-grey-color)]">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Doloremque veniam
+                </p>
+                <p className="mt-[30px] w-fit text-[#246b49] bg-[#f1f8f4] px-[15px] py-[10px]">
+                  {emp} Employes
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
