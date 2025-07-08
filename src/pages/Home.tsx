@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 import useRandom from "../hooks/useRandom";
 import { FetchContext } from "../App";
 
+import { MdOutlinePeopleAlt } from "react-icons/md";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { CiLocationOn } from "react-icons/ci";
@@ -18,6 +19,7 @@ const Home = () => {
       return randomCompanies.includes(index);
     }
   }, []);
+  const [testiState, setTestiState] = useState<number>(1);
 
   const [randomCompType, setRandomCompType] = useState(
     Math.floor(Math.random() * 4)
@@ -25,6 +27,9 @@ const Home = () => {
   const [randomCompTime, setRandomCompTime] = useState(
     Math.floor(Math.random() * 4)
   );
+  const switchTesti = () => {
+    setTestiState(testiState === 1 ? 2 : 1);
+  };
 
   const [exiCompanies, setExiCompanies] = useState([
     { name: "Facebook", emp: 3000, img: "./../../public/company-3.svg" },
@@ -89,7 +94,7 @@ const Home = () => {
             </span>{" "}
             Stay connected to get upcoming jobs
           </p>
-          <h2 className="text-[45px] font-bold mt-[25px]">
+          <h2 className="text-[45px] font-bold mt-[25px] max-sm:text-[30px]">
             Find the most exciting jobs in tech
           </h2>
         </div>
@@ -151,7 +156,7 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-[120px] popup popup-1">
-        <h2 className="text-[40px] font-bold mb-[20px]">
+        <h2 className="text-[40px] font-bold mb-[20px] max-sm:text-[30px]">
           Explore the latest job openings{" "}
         </h2>
         <div className="flex items-center mb-[40px] max-md:flex-col">
@@ -405,7 +410,7 @@ const Home = () => {
       </div>
 
       <div className="mt-[120px]">
-        <h2 className="text-[40px] font-bold mb-[10px]">
+        <h2 className="text-[40px] font-bold mb-[10px] max-sm:text-[30px]">
           Work with exciting companies
         </h2>
         <div className="flex items-center mb-[40px] max-md:flex-col max-md:items-start">
@@ -469,6 +474,181 @@ const Home = () => {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      <div className="flex gap-[100px] mt-[200px] max-lg:flex-col max-sm:gap-[50px]">
+        <div className="flex-1">
+          <img
+            className="max-lg:w-full"
+            src="https://assets.website-files.com/63337525695d8ba70ab44222/6345158a36516a477226909d_Feature%20Image.webp"
+          />
+          <p className="text-center text-[var(--text-grey-color)] mt-[10px]">
+            Partnership with <span className="text-black">Glassdoor</span> and{" "}
+            <span className="text-black">LinkedIn</span>
+          </p>
+        </div>
+        <div className="flex-1">
+          <p className="text-[var(--main-color)] font-bold text-[18px] tracking-wide">
+            WHY CHOOSE US
+          </p>
+          <h2 className="font-bold text-[35px] leading-[1.3] my-[15px] max-sm:text-[30px]">
+            Build a custom membership site with locked content.
+          </h2>
+          <p className="text-[var(--text-grey-color)] mt-[30px] mb-[50px]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mi
+            rhoncus, pharetra leo et, efficitur tortor. Fusce vel convallis
+            magna, sit amet pulvinar diam. Sed laoreet feugiat consequat.
+          </p>
+          {[1, 2, 3].map((i, index) => (
+            <div className="flex gap-[10px] items-center mt-[20px]">
+              <div
+                className="w-[50px] h-[50px] border-solid border-[#ccc] border-[1px]
+              flex justify-center items-center mr-[15px]"
+              >
+                <MdOutlinePeopleAlt
+                  className="text-[var(--main-color)] 
+                font-bold text-[20px]"
+                />
+              </div>
+              <div>
+                <h3 className="font-bold text-[1.1em] mb-[5px]">
+                  Add a feature point here
+                </h3>
+                <p className="text-[var(--text-grey-color)]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-[200px]">
+        <p className="text-center text-[var(--main-color)] tracking-wide font-bold">
+          TESTIMONIAL
+        </p>
+        <h2
+          className="text-center text-[2.5em] leading-[1.2] tracking-wide
+        font-bold max-sm:text-[30px]"
+        >
+          See what users say about <br className="max-sm:hidden"></br>our job
+          platform
+        </h2>
+        <div className="mt-[80px] relative switch-testi">
+          {testiState === 1 ? (
+            <div
+              className={`flex gap-[100px] px-[100px] max-lg:flex-col max-lg:gap-[50px]
+            max-lg:px-[0] opacity-0 ${
+              testiState === 1 ? " switch-testi" : "opacity-0"
+            }`}
+            >
+              <div className="flex-2 pb-[60px] max-lg:pb-[0]">
+                <div
+                  className="border-solid border-[var(--grey-color)] 
+                border-[1px] w-[60px] h-[60px] flex justify-center items-center"
+                >
+                  <img src="https://cdn.prod.website-files.com/63337525695d8ba70ab44222/63337525695d8b3fa3b4427d_Mail%20Chimp%20Icon.svg" />
+                </div>
+                <h2
+                  className="text-[2em] text-[var(--text-grey-color)] leading-[1.2] my-[40px]
+                max-sm:text-[1.5em]"
+                >
+                  “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  a mi rhoncus, pharetra leo et, efficitur tortor. Fusce vel
+                  convallis magna”
+                </h2>
+                <p>
+                  <span className="text-[var(--main-color)]">
+                    David Sinclair
+                  </span>
+                  - Senior Frontend Developer
+                </p>
+                <div
+                  className="flex absolute left-100px bottom-0 max-lg:left-none
+                max-lg:bottom-none max-lg:right-0 max-lg:top-0"
+                >
+                  <div
+                    onClick={switchTesti}
+                    className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+                  >
+                    <FaArrowLeftLong />
+                  </div>
+                  <div
+                    onClick={switchTesti}
+                    className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px] ml-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+                  >
+                    <FaArrowRightLong />
+                  </div>
+                </div>
+              </div>
+              <div className="flex-2 max-lg:w-full">
+                <img
+                  className="max-lg:w-full"
+                  src="https://assets.website-files.com/63337525695d8ba70ab44222/634517c289833b2b6e36b6f2_Testimonial%20Image.jpg"
+                />
+              </div>
+            </div>
+          ) : (
+            <div
+              className={`flex gap-[100px] px-[100px] max-lg:flex-col max-lg:gap-[50px]
+            max-lg:px-[0] switch-testi opacity-0 ${
+              testiState === 2 ? " switch-testi" : "opacity-0"
+            }`}
+            >
+              <div className="flex-2 pb-[60px] max-lg:pb-[0]">
+                <div
+                  className="border-solid border-[var(--grey-color)] 
+                border-[1px] w-[60px] h-[60px] flex justify-center items-center"
+                >
+                  <img src="https://cdn.prod.website-files.com/63337525695d8ba70ab44222/63337525695d8b3fa3b4427d_Mail%20Chimp%20Icon.svg" />
+                </div>
+                <h2
+                  className="text-[2em] text-[var(--text-grey-color)] leading-[1.2] my-[40px]
+                max-sm:text-[1.5em]"
+                >
+                  “There are lot of interesting projects that casting directors
+                  post on this platform. So many people and companies trust
+                  casting through Platform”
+                </h2>
+                <p>
+                  <span className="text-[var(--main-color)]">Emily York</span>-
+                  Senior Frontend Developer
+                </p>
+                <div
+                  className="flex absolute left-100px bottom-0 max-lg:left-none
+                max-lg:bottom-none max-lg:right-0 max-lg:top-0"
+                >
+                  <div
+                    onClick={switchTesti}
+                    className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+                  >
+                    <FaArrowLeftLong />
+                  </div>
+                  <div
+                    onClick={switchTesti}
+                    className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px] ml-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+                  >
+                    <FaArrowRightLong />
+                  </div>
+                </div>
+              </div>
+              <div className="flex-2 max-lg:w-full">
+                <img
+                  className="max-lg:w-full"
+                  src="http://cdn.prod.website-files.com/63337525695d8ba70ab44222/63337525695d8b405fb44260_Why%20Choose%20Us%20Image%20(2).jpg"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
