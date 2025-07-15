@@ -37,7 +37,10 @@ const Navbar = () => {
         menu ? ` on` : ` off`
       }`}
       >
-        <div className=" flex items-center gap-[30px] max-lg:flex-col max-lg:items-start">
+        <div
+          className=" flex items-center gap-[30px] max-lg:flex-col max-lg:items-start
+        mr-[-50px] max-lg:mr-[0]"
+        >
           <NavLink
             to="/"
             className="hover:text-[var(--main-color)] duration-300"
@@ -87,8 +90,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-
-
     </div>
   );
 };

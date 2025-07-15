@@ -1,14 +1,22 @@
-import React, { useEffect, useState, useCallback, useContext } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useContext,
+  type CSSProperties,
+} from "react";
 import { CiSearch } from "react-icons/ci";
 import useFetch from "../hooks/useFetch";
 import useRandom from "../hooks/useRandom";
 import { FetchContext } from "../App";
+import useAnimate from "../hooks/useAnimate";
 
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { CiLocationOn } from "react-icons/ci";
 import { TbCoins } from "react-icons/tb";
+import { GoDotFill } from "react-icons/go";
 
 const Home = () => {
   const DataContext = useContext(FetchContext);
@@ -39,6 +47,66 @@ const Home = () => {
     { name: "Slack", emp: 2000, img: "./../../public/company-6.svg" },
   ]);
 
+  type blogsType = {
+    img: string;
+    name: string;
+    desc: string;
+    date: string;
+  }[];
+
+  const [blogsUpdate, setBlogsUpdate] = useState(0);
+  const [tempBlogs, setTempBlogs] = useState<any>();
+  const [blogs, setBlogs] = useState([
+    {
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63561be639e4e57a35cf71d2_Blog%20Image-p-500.jpg",
+      name: "Resources",
+      desc: "Finding employees in the gig economy",
+      date: "October 24, 2022",
+    },
+    {
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63561bd8f9e1cc06c2dd3337_Blog%20Image%2003.jpg",
+      name: "Education",
+      desc: "How to make a great first impression everytime",
+      date: "October 24, 2022",
+    },
+    {
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63561bccf9e1cc47c1dd3328_Blog%20Image%2002-p-500.jpg",
+      name: "Trends",
+      desc: "Find out the best paying careers in 2022",
+      date: "October 24, 2022",
+    },
+    {
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8bf728b44250_Blog%2520Thumbnail%2520(3)-p-800.jpeg",
+      name: "Careers",
+      desc: "Ten things to nail your next job Interview",
+      date: "March 24, 2021",
+    },
+    {
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b1af3b4424f_Blog%20Thumbnail%20(2).jpg",
+      name: "Resources",
+      desc: "Why Every Student Should Get a Startup Job",
+      date: "March 24, 2021",
+    },
+  ]);
+
+  useEffect(() => {
+    if (blogsUpdate) {
+      const timeout = setTimeout(() => {
+        setBlogs(tempBlogs);
+        setBlogsUpdate(0);
+      }, 495);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [blogsUpdate]);
+
+  const blogStyles: CSSProperties = {};
+
+  // transform: translateX(calc(-42.5%));
+  // transform: translateX(calc(-1.5%));
+
   const exiCompLeft = () => {
     setMoveExiCompLeft(true);
   };
@@ -65,6 +133,9 @@ const Home = () => {
           return newCompanies;
         });
       }, 300);
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [moveExiCompLeft]);
 
@@ -417,7 +488,7 @@ const Home = () => {
           <p className="text-[var(--text-grey-color)] flex-4">
             Discover more than 1,600 open positions
           </p>
-          <div className="flex-2 flex justify-end max-md:mt-[15px]">
+          <div className="flex-2 flex justify-end max-md:mt-[15px] max-md:mx-auto">
             <div
               onClick={exiCompLeft}
               className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
@@ -477,7 +548,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex gap-[100px] mt-[200px] max-lg:flex-col max-sm:gap-[50px]">
+      <div
+        className="flex gap-[100px] mt-[200px] max-lg:flex-col max-sm:gap-[50px]
+      max-sm:mt-[100px]"
+      >
         <div className="flex-1">
           <img
             className="max-lg:w-full"
@@ -501,7 +575,7 @@ const Home = () => {
             magna, sit amet pulvinar diam. Sed laoreet feugiat consequat.
           </p>
           {[1, 2, 3].map((i, index) => (
-            <div className="flex gap-[10px] items-center mt-[20px]">
+            <div key={index} className="flex gap-[10px] items-center mt-[20px]">
               <div
                 className="w-[50px] h-[50px] border-solid border-[#ccc] border-[1px]
               flex justify-center items-center mr-[15px]"
@@ -524,7 +598,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="mt-[200px]">
+      <div className="mt-[200px] max-sm:mt-[100px]">
         <p className="text-center text-[var(--main-color)] tracking-wide font-bold">
           TESTIMONIAL
         </p>
@@ -649,6 +723,97 @@ const Home = () => {
               </div>
             </div>
           )}
+        </div>
+      </div>
+
+      <div className="mt-[200px] max-sm:mt-[100px] relative">
+        <div
+          className="mb-[80px] flex justify-between gap-[50px] max-md:flex-col 
+        max-md:mb-[40px]"
+        >
+          <div>
+            <p className=" text-[var(--main-color)] tracking-wide font-bold">
+              blog
+            </p>
+            <h2
+              className=" text-[2.5em] leading-[1.2] tracking-wide
+        font-bold max-sm:text-[30px]"
+            >
+              Get the latest news about jobs!
+            </h2>
+          </div>
+          <div className="flex gap-[20px] max-md:mx-auto">
+            <div
+              className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+              onClick={() => {
+                const tempBlog = blogs[blogs.length - 1];
+                let newState: blogsType = blogs.slice(0, blogs.length - 1);
+                newState.unshift(tempBlog);
+                setTempBlogs(newState);
+                setBlogsUpdate(1);
+              }}
+            >
+              <FaArrowLeftLong />
+            </div>
+            <div
+              onClick={() => {
+                const tempBlog = blogs[0];
+                let newState: blogsType = blogs.slice(1, blogs.length);
+                newState.push(tempBlog);
+                setTempBlogs(newState);
+                setBlogsUpdate(2);
+              }}
+              className="w-[50px] h-[50px] border-solid border-[var(--grey-color)]
+             border-[1px] flex justify-center items-center text-[20px]
+             cursor-pointer hover:bg-[var(--grey-color)] duration-300"
+            >
+              <FaArrowRightLong />
+            </div>
+          </div>
+        </div>
+        <div className="blogs grid grid-cols-5">
+          {blogs.map((blog: any, index: number) => (
+            <div
+              key={index}
+              className={`shadow-2 border-solid border-[2px] border-[var(--grey-color)]${
+                blogsUpdate === 1
+                  ? " move-blogs-left"
+                  : blogsUpdate === 2
+                  ? " move-blogs-right"
+                  : " "
+              }`}
+            >
+              <div className="w-full">
+                <img
+                  className="w-full object-cover max-h-[200px] max-md:max-h-[300px ]"
+                  src={blog.img}
+                />
+              </div>
+              <p
+                className="ml-[30px] text-[var(--main-color)] mt-[40px] bg-[#f3f3fc]
+              w-fit p-[5px]"
+              >
+                {blog.name}
+              </p>
+              <h2 className="p-[10px] font-bold text-[20px]">{blog.desc}</h2>
+              <h3
+                className="flex items-center text-[var(--text-grey-color)] tracking-[4px]
+              pl-[10px]"
+              >
+                <GoDotFill className="text-[var(--text-grey-color)] text-[15px] mr-[5px]" />
+                {blog.date}
+              </h3>
+              <button
+                className="w-full flex items-center text-center bg-white duration-300
+              justify-center mt-[20px] cursor-pointer hover:bg-[var(--grey-color)]
+              py-[10px] "
+              >
+                Read More <FaArrowRightLong className="ml-[10px]" />
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

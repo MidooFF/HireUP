@@ -129,11 +129,41 @@
         animation-duration: 300ms;
         animation-fill-mode: both;
     }
+
+    .move-blogs-left {
+        animation-name: move-blogs-left;
+        animation-duration: 500ms;
+        animation-fill-mode: both;
+    }
+    .move-blogs-right {
+        animation-name: move-blogs-right;
+        animation-duration: 500ms;
+        animation-fill-mode: both;
+    }
+
+    .blogs {
+        width: calc((100% / 3 + 0%)* 5 + 14%);
+        gap: 45px;
+        transform: translateX(calc(110% / -5));
+    }
     @media(max-width: 1024px) {
         .navbar .links {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 9px;
         }
     }
+    @media(max-width: 1024px) {
+        .blogs {
+            width: calc((100% / 2 + 0%)* 5 + 14%);
+            transform: translateX(calc(103% / -5));
+        }
+    }
+    @media(max-width: 48rem) {
+        .blogs {
+            width: calc((100% / 1 + 0%)* 5 + 14%);
+            transform: translateX(calc(100% / -5));
+        }
+    }
+
 }
 
 @keyframes popup {
@@ -182,5 +212,22 @@
     }
     to {
         opacity: 1
+    }
+}
+
+@keyframes move-blogs-left {
+    from {
+        transform: translateX(0)
+    }
+    to {
+        transform: translateX(calc(100% + 45px));
+    }
+}
+@keyframes move-blogs-right {
+    from {
+        transform: translateX(0)
+    }
+    to {
+        transform: translateX(calc(-100% - 45px));
     }
 }
