@@ -51,7 +51,7 @@ const Navbar = () => {
             Home
           </NavLink>
           <NavLink
-            to="company"
+            to="about"
             className="hover:text-[var(--main-color)] duration-300"
             onClick={() => {
               setMenu((prev) => !prev);

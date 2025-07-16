@@ -5,6 +5,7 @@ import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar.tsx";
+import About from "./pages/About/About.tsx";
 
 type contextType = {
   loading: boolean;
@@ -23,6 +24,7 @@ function App() {
       <FetchContext.Provider value={useFetch()}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="about" element={<About />}></Route>
         </Routes>
       </FetchContext.Provider>
     </>

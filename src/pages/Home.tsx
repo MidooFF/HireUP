@@ -20,6 +20,10 @@ import { TbCoins } from "react-icons/tb";
 import { GoDotFill } from "react-icons/go";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const DataContext = useContext(FetchContext);
   const { loading, data, error } = DataContext;
   const { randomCompanies, randomCompanyImages } = useRandom(6);
