@@ -5,6 +5,8 @@ import Companies from "./Companies";
 import Audience from "./Audience";
 import OurTeam from "./OurTeam";
 import FAQ from "./FAQ";
+import ContactUs from "./ContactUs";
+import Footer from "../../components/Footer";
 
 const About = () => {
   useEffect(() => {
@@ -18,6 +20,8 @@ const About = () => {
       <Audience />
       <OurTeam />
       <FAQ />
+      <ContactUs />
+      <Footer />
     </div>
   );
 };
