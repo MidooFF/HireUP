@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 
 import Landing from "./Landing";
 import Companies from "./Companies";
+import Audience from "./Audience";
+import OurTeam from "./OurTeam";
+import FAQ from "./FAQ";
 
 const About = () => {
   useEffect(() => {
@@ -9,9 +12,12 @@ const About = () => {
   }, []);
 
   return (
-    <div className="pt-[110px]">
+    <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
       <Landing />
       <Companies />
+      <Audience />
+      <OurTeam />
+      <FAQ />
     </div>
   );
 };

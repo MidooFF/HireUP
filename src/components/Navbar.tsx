@@ -7,7 +7,8 @@ const Navbar = () => {
   return (
     <div
       className="navbar shadow-1 flex items-center pl-[var(--section-padding)] 
-    pr-[var(--section-padding)] py-[15px] fixed w-full z-10 bg-white"
+    pr-[var(--section-padding)] py-[15px] fixed w-full z-10 bg-white
+    max-w-[100vw]"
     >
       <div className="bg-white w-full h-full absolute top-0 left-0 z-15 hidden max-lg:block"></div>
       <div
