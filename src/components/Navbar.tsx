@@ -2,15 +2,22 @@ import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ page }: { page: string }) => {
   const [menu, setMenu] = useState(false);
   return (
     <div
-      className="navbar shadow-1 flex items-center pl-[var(--section-padding)] 
-    pr-[var(--section-padding)] py-[15px] fixed w-full z-10 bg-white
-    max-w-[100vw]"
+      className={`navbar shadow-1 flex items-center  py-[15px] fixed w-full z-10 bg-white
+    max-w-[100vw] pl-[var(--section-padding)] pr-[var(--section-padding)]`}
     >
-      <div className="bg-white w-full h-full absolute top-0 left-0 z-15 hidden max-lg:block"></div>
+      {/* ${
+      page === "home"
+        ? " pl-[var(--section-padding)] pr-[var(--section-padding)] max-sm:pl-[1.25%] max-sm:pr-[1.25%]"
+        : " pl-[var(--section-padding)] pr-[var(--section-padding)]"
+    } */}
+      <div
+        className="bg-white w-full h-full absolute top-0 left-0 z-15 hidden max-lg:block
+      justify-evenly  max-lg:gap-0 max-lg:justify-start"
+      ></div>
       <div
         className="logo flex flex-1 items-center text-[25px] cursor-pointer
       relative bg-white z-15"
@@ -40,7 +47,7 @@ const Navbar = () => {
       >
         <div
           className=" flex items-center gap-[30px] max-lg:flex-col max-lg:items-start
-        mr-[-50px] max-lg:mr-[0]"
+        mr-[-90px] max-lg:mr-[0] ml-[20px] max-lg:ml-0"
         >
           <NavLink
             to="/"
@@ -52,7 +59,7 @@ const Navbar = () => {
             Home
           </NavLink>
           <NavLink
-            to="about"
+            to="/about"
             className="hover:text-[var(--main-color)] duration-300"
             onClick={() => {
               setMenu((prev) => !prev);
@@ -61,7 +68,7 @@ const Navbar = () => {
             Company
           </NavLink>
           <NavLink
-            to="browse"
+            to="/browse"
             className="hover:text-[var(--main-color)] duration-300"
             onClick={() => {
               setMenu((prev) => !prev);
@@ -70,7 +77,7 @@ const Navbar = () => {
             Browse
           </NavLink>
           <NavLink
-            to="blog"
+            to="/blog"
             className="hover:text-[var(--main-color)] duration-300"
             onClick={() => {
               setMenu((prev) => !prev);

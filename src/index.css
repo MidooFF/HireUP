@@ -42,6 +42,9 @@
     .popup-3 {
         animation-delay: 300ms;
     }
+    .popup-4 {
+        animation-delay: 500ms;
+    }
 
     .burger-icon {
         position: relative;

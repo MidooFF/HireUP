@@ -10,6 +10,9 @@ import useRandom from "../hooks/useRandom";
 import { FetchContext } from "../App";
 import useAnimate from "../hooks/useAnimate";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+import { useSearchTerm } from "../context/SearchContext";
+import { useSearchUpdate } from "../context/SearchContext";
 
 import { CiSearch } from "react-icons/ci";
 import { MdOutlinePeopleAlt } from "react-icons/md";
@@ -18,11 +21,17 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { CiLocationOn } from "react-icons/ci";
 import { TbCoins } from "react-icons/tb";
 import { GoDotFill } from "react-icons/go";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const navigate = useNavigate();
+
+  const searchTerm = useSearchTerm();
+  const setSearchTerm = useSearchUpdate();
 
   const DataContext = useContext(FetchContext);
   const { loading, data, error } = DataContext;
@@ -159,6 +168,8 @@ const Home = () => {
   }, [moveExiCompRight]);
   return (
     <>
+      <Navbar page="home"></Navbar>
+
       <div className="home section-padding pt-[80px] relative">
         <div
           className="flex justify-between items-end gap-[90px] max-lg:flex-col
@@ -196,12 +207,19 @@ const Home = () => {
               <div className="flex w-full max-sm:pb-[10px ]">
                 <CiSearch />
                 <input
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
                   required
                   className="border-none outline-none flex-2"
                   placeholder="Search..."
                 />
               </div>
               <button
+                onClick={() => {
+                  navigate("/browse");
+                }}
                 type="submit"
                 className="px-[25px] py-[8px] text-white bg-[var(--main-color)] mr-[10px]
           cursor-pointer text-[18px] max-sm:w-[100%] max-sm:mr-[0] max-sm:mt-[10px]"
