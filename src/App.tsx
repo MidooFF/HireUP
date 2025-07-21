@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar.tsx";
 import About from "./pages/About/About.tsx";
 import Browse from "./pages/Browse/Browse.tsx";
 import Blog from "./pages/Blog/Blog.tsx";
+import Login from "./pages/Login/Login.tsx";
 
 import { SearchProvider } from "./context/SearchContext.tsx";
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="about" element={<About />}></Route>
             <Route path="browse" element={<Browse />}></Route>
             <Route path="blog" element={<Blog />}></Route>
+            <Route path="login" element={<Login />} />
           </Routes>
         </FetchContext.Provider>
       </SearchProvider>

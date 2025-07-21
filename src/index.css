@@ -149,6 +149,10 @@
         gap: 45px;
         transform: translateX(calc(110% / -5));
     }
+
+    .login-bg {
+        background-image: url("https://assets.website-files.com/63337525695d8ba70ab44222/63475e159ce2393293e2ea05_Signup%20Background.svg")
+    }
     @media(max-width: 1024px) {
         .navbar .links {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 9px;

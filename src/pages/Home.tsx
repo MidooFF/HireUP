@@ -843,6 +843,9 @@ const Home = () => {
                   className="w-full flex items-center text-center bg-white duration-300
               justify-center mt-[20px] cursor-pointer hover:bg-[var(--grey-color)]
               py-[10px] "
+                  onClick={() => {
+                    navigate("/blog");
+                  }}
                 >
                   Read More <FaArrowRightLong className="ml-[10px]" />
                 </button>

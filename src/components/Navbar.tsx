@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ page }: { page: string }) => {
+  const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   return (
     <div
@@ -87,10 +89,18 @@ const Navbar = ({ page }: { page: string }) => {
           </NavLink>
         </div>
         <div className="max-lg:w-full">
-          <button className="mr-[20px] cursor-pointer max-lg:hidden">
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+            className="mr-[20px] cursor-pointer max-lg:hidden"
+          >
             Post A Job
           </button>
           <button
+            onClick={() => {
+              navigate("/login");
+            }}
             className="py-[10px] px-[20px] bg-[var(--main-color)] text-white 
         font-bold cursor-pointer max-lg:mt-[20px] max-lg:w-full"
           >

@@ -23,19 +23,19 @@ const Footer = () => {
               Pages
             </h2>
             <Link to="/">Home</Link>
-            <Link to="about">About</Link>
-            <Link to="pricing">Pricing</Link>
-            <Link to="browse">Jobs</Link>
-            <Link to="login">Post A Job</Link>
+            <Link to="/about">About</Link>
+            <Link to="/pricing">Pricing</Link>
+            <Link to="/browse">Jobs</Link>
+            <Link to="/login">Post A Job</Link>
           </div>
           <div className="flex flex-col gap-[15px]">
             <h2 className="text-[var(--text-grey-color)] text-[1.2em] mb-[10px] font-bold">
               Account
             </h2>
-            <Link to="login">Sign In</Link>
-            <Link to="sign-up">Sign Up</Link>
-            <Link to="reset-password">Reset Password</Link>
-            <Link to="login">User Account</Link>
+            <Link to="/login">Sign In</Link>
+            <Link to="/sign-up">Sign Up</Link>
+            <Link to="/reset-password">Reset Password</Link>
+            <Link to="/login">User Account</Link>
           </div>
         </div>
         <div className="flex-1">
