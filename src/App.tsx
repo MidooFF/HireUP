@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar.tsx";
 import About from "./pages/About/About.tsx";
 import Browse from "./pages/Browse/Browse.tsx";
+import Blog from "./pages/Blog/Blog.tsx";
 
 import { SearchProvider } from "./context/SearchContext.tsx";
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="about" element={<About />}></Route>
             <Route path="browse" element={<Browse />}></Route>
+            <Route path="blog" element={<Blog />}></Route>
           </Routes>
         </FetchContext.Provider>
       </SearchProvider>
