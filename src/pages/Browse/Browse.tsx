@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 
 import { useSearchTerm } from "../../context/SearchContext";
@@ -12,14 +12,12 @@ import { CiSearch } from "react-icons/ci";
 import { TiInfoLarge } from "react-icons/ti";
 import { FaCheck } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import useDebounce from "../../hooks/useDebounce";
 
 const Browse = () => {
   const searchTerm = useSearchTerm();
   const [openJobsTypes, setOpenJobsTypes] = useState(false);
   const setSearchTerm = useSearchUpdate();
   const data = useContext(FetchContext);
-  const [newLoading, setNewLoading] = useState(true);
   const tags = [
     "managment",
     "team leader",
@@ -40,9 +38,9 @@ const Browse = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    setRandomImages(data.data.map((job) => Math.floor(Math.random() * 5) + 1));
+    setRandomImages(data.data.map(() => Math.floor(Math.random() * 5) + 1));
     setRandomTypes(
-      data.data.map((job) =>
+      data.data.map(() =>
         Math.floor(Math.random() * 3) == 0
           ? "Marketing"
           : Math.floor(Math.random() * 3) == 1
@@ -53,7 +51,7 @@ const Browse = () => {
       )
     );
     setRandomTimes(
-      data.data.map((job) =>
+      data.data.map(() =>
         Math.floor(Math.random() * 3) == 0
           ? "Full Time"
           : Math.floor(Math.random() * 3) == 1
@@ -63,7 +61,6 @@ const Browse = () => {
     );
   }, [data.loading]);
   const [remoteFilter, setRemoteFilter] = useState(false);
-  const [remoteFilterConfirm, setRemoteFilterConfirm] = useState(false);
   const [jobsTypes, setJobsTypes] = useState<any>([]);
 
   const filterJobs = (data: any) => {
@@ -128,7 +125,7 @@ const Browse = () => {
 
   return (
     <>
-      <Navbar page="browse"></Navbar>
+      <Navbar></Navbar>
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <h2
           className="text-[45px] text-center font-bold mt-[60px] leading-[1.2]
@@ -284,7 +281,7 @@ const Browse = () => {
           max-lg:w-full max-md:grid-cols-1"
           >
             {data.loading || !randomTypes || !randomTimes || !randomImages
-              ? [1, 2, 3, 4].map((item, i) => (
+              ? [1, 2, 3, 4].map((i) => (
                   <LoadingJob key={i} popup={i}></LoadingJob>
                 ))
               : filterJobs(data.data).map((job: any, i: any) => (

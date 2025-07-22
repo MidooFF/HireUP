@@ -1,4 +1,3 @@
-import React from "react";
 import Quest from "../../components/faq";
 
 const FAQ = () => {

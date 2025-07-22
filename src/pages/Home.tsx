@@ -1,14 +1,6 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useContext,
-  type CSSProperties,
-} from "react";
-import useFetch from "../hooks/useFetch";
+import { useEffect, useState, useCallback, useContext } from "react";
 import useRandom from "../hooks/useRandom";
 import { FetchContext } from "../App";
-import useAnimate from "../hooks/useAnimate";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useSearchTerm } from "../context/SearchContext";
@@ -34,7 +26,7 @@ const Home = () => {
   const setSearchTerm = useSearchUpdate();
 
   const DataContext = useContext(FetchContext);
-  const { loading, data, error } = DataContext;
+  const { loading, data } = DataContext;
   const { randomCompanies, randomCompanyImages } = useRandom(6);
   const renderCompanies = useCallback((index: number) => {
     for (let i = 0; i < randomCompanies.length; i++) {
@@ -43,12 +35,8 @@ const Home = () => {
   }, []);
   const [testiState, setTestiState] = useState<number>(1);
 
-  const [randomCompType, setRandomCompType] = useState(
-    Math.floor(Math.random() * 4)
-  );
-  const [randomCompTime, setRandomCompTime] = useState(
-    Math.floor(Math.random() * 4)
-  );
+  const [randomCompType] = useState(Math.floor(Math.random() * 4));
+  const [randomCompTime] = useState(Math.floor(Math.random() * 4));
   const switchTesti = () => {
     setTestiState(testiState === 1 ? 2 : 1);
   };
@@ -116,8 +104,6 @@ const Home = () => {
     }
   }, [blogsUpdate]);
 
-  const blogStyles: CSSProperties = {};
-
   // transform: translateX(calc(-42.5%));
   // transform: translateX(calc(-1.5%));
 
@@ -155,7 +141,7 @@ const Home = () => {
 
   useEffect(() => {
     if (moveExiCompRight) {
-      let timeout = setTimeout(() => {
+      setTimeout(() => {
         setExiCompanies((prevCompanies) => {
           if (prevCompanies.length === 0) return prevCompanies;
           const [firstCompany, ...remainingCompanies] = prevCompanies;
@@ -168,7 +154,7 @@ const Home = () => {
   }, [moveExiCompRight]);
   return (
     <>
-      <Navbar page="home"></Navbar>
+      <Navbar></Navbar>
 
       <div className="home section-padding pt-[80px] relative">
         <div
@@ -605,7 +591,7 @@ const Home = () => {
               rhoncus, pharetra leo et, efficitur tortor. Fusce vel convallis
               magna, sit amet pulvinar diam. Sed laoreet feugiat consequat.
             </p>
-            {[1, 2, 3].map((i, index) => (
+            {[1, 2, 3].map((index) => (
               <div
                 key={index}
                 className="flex gap-[10px] items-center mt-[20px]"

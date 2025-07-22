@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -7,19 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const signupuserURL =
-    "https://assets.website-files.com/63337525695d8ba70ab44222/63337525695d8b2f7db4425b_Testimonial%20Avatar.webp";
-  const userURL =
-    "https://assets.website-files.com/63337525695d8ba70ab44222/63337525695d8bb62eb44259_Testimonial%20Avatar%20(1).webp";
-  const bgURL =
-    "https://assets.website-files.com/63337525695d8ba70ab44222/63475e159ce2393293e2ea05_Signup%20Background.svg";
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
-      <Navbar page="login" />
+      <Navbar />
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px] mb-[150px]">
         <div className="flex gap-[60px] max-lg:flex-col-reverse max-lg:gap-[20px]">
           <div className="flex-1 pl-[5%] max-lg:pr-[5%] popup popup-1 max-lg:popup-2">

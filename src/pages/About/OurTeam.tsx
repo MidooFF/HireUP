@@ -1,5 +1,3 @@
-import React from "react";
-
 const OurTeam = () => {
   return (
     <div className="mt-[200px] max-sm:mt-[100px] section-padding text-center">

@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ page }: { page: string }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   return (

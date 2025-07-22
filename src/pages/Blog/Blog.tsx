@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
@@ -50,7 +50,7 @@ const Blog = () => {
   ];
   return (
     <>
-      <Navbar page="blog" />
+      <Navbar />
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <p
           className="text-[var(--main-color)] text-[18px] text-center

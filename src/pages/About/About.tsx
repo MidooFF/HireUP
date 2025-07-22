@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import Landing from "./Landing";
 import Companies from "./Companies";
@@ -16,7 +16,7 @@ const About = () => {
 
   return (
     <>
-      <Navbar page="about"></Navbar>
+      <Navbar></Navbar>
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <Landing />
         <Companies />
