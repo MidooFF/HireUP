@@ -859,23 +859,23 @@ const Home = () => {
           </p>
           <div
             className="w-[650px] flex border-solid border-[var(--grey-color)] border-[2px] 
-        mx-auto p-[5px] items-center mt-[40px] max-md:w-full"
+        mx-auto p-[5px] items-center mt-[40px] max-md:w-full max-md:flex-col"
           >
-            <CiSearch className="text-[30px] text-[var(--text-grey-color)] mr-[15px]" />
-            <form className="flex-1 flex">
+            <div className="w-full flex items-center">
+              <CiSearch className="text-[30px] text-[var(--text-grey-color)] mr-[15px]" />
               <input
                 required
                 placeholder="Search.."
-                className="flex-1 border-none outline-none  "
+                className="flex-1 border-none outline-none py-[10px] "
               />
-              <button
-                type="submit"
-                className="bg-[var(--main-color)] px-[25px] py-[10px] text-white
-              cursor-pointer"
-              >
-                Search
-              </button>
-            </form>
+            </div>
+            <button
+              type="submit"
+              className="bg-[var(--main-color)] px-[25px] py-[10px] text-white
+              cursor-pointer max-md:w-full w-fit"
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>

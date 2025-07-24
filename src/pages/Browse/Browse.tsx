@@ -129,14 +129,14 @@ const Browse = () => {
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <h2
           className="text-[45px] text-center font-bold mt-[60px] leading-[1.2]
-        max-sm:text-[30px] popup popup-1"
+        max-sm:text-[30px] popup popup-1 section-padding"
         >
           Build a complete job board
           <br className="max-md:hidden" /> with Webflow memberships
         </h2>
         <p
           className="text-[var(--text-grey-color)] text-center leading-[1.6]
-        mt-[20px] text-[18px] max-sm:text-[16px] popup popup-2"
+        mt-[20px] text-[18px] max-sm:text-[16px] popup popup-2 section-padding"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           varius <br className="max-md:hidden" /> enim in eros elementum
@@ -146,9 +146,9 @@ const Browse = () => {
         <div
           className="border-solid border-[1px] border-[var(--grey-color)] w-[700px]
         mx-[auto] flex items-center px-[15px] py-[10px] justify-between mt-[100px]
-        max-md:w-full"
+        max-md:w-full max-md:flex-col"
         >
-          <div className="flex items-center popup popup-3">
+          <div className="flex items-center popup popup-3 max-md:w-full max-md:py-[10px]">
             <CiSearch className="text-[25px] mr-[10px]" />
             <input
               value={searchTerm}
@@ -161,7 +161,7 @@ const Browse = () => {
           </div>
           <button
             className="bg-[var(--main-color)] text-white py-[10px] px-[30px]
-          font-bold popup popup-3"
+          font-bold popup popup-3 max-md:w-full"
           >
             Search
           </button>
