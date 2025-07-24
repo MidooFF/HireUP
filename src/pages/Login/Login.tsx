@@ -13,7 +13,7 @@ const Login = () => {
   }, []);
   return (
     <>
-      <Navbar />
+      <Navbar page="login"></Navbar>
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px] mb-[150px]">
         <div className="flex gap-[60px] max-lg:flex-col-reverse max-lg:gap-[20px]">
           <div className="flex-1 pl-[5%] max-lg:pr-[5%] popup popup-1 max-lg:popup-2">

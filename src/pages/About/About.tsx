@@ -16,7 +16,7 @@ const About = () => {
 
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar page="about"></Navbar>
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <Landing />
         <Companies />

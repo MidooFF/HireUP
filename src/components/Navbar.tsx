@@ -3,13 +3,17 @@ import { FaArrowRight } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ page }: { page: string }) => {
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   return (
     <div
       className={`navbar shadow-1 flex items-center  py-[15px] fixed w-full z-10 bg-white
-    max-w-[100vw] pl-[var(--section-padding)] pr-[var(--section-padding)]`}
+    max-w-[100vw] pl-[var(--section-padding)] pr-[var(--section-padding)] ${
+      page === "home"
+        ? " pl-[var(--section-padding)] pr-[var(--section-padding)] max-sm:pl-[1.25%] max-sm:pr-[1.25%]"
+        : " pl-[var(--section-padding)] pr-[var(--section-padding)]"
+    }`}
     >
       {/* ${
       page === "home"

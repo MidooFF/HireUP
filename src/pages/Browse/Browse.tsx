@@ -125,7 +125,7 @@ const Browse = () => {
 
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar page="browse"></Navbar>
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <h2
           className="text-[45px] text-center font-bold mt-[60px] leading-[1.2]

@@ -154,7 +154,7 @@ const Home = () => {
   }, [moveExiCompRight]);
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar page="home"></Navbar>
 
       <div className="home section-padding pt-[80px] relative">
         <div

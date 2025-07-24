@@ -50,7 +50,7 @@ const Blog = () => {
   ];
   return (
     <>
-      <Navbar />
+      <Navbar page="blog" />
       <div className="pt-[110px] max-md:pt-[60px] max-lg:pt-[60px]">
         <p
           className="text-[var(--main-color)] text-[18px] text-center
