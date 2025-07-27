@@ -42,11 +42,31 @@ const Home = () => {
   };
 
   const [exiCompanies, setExiCompanies] = useState([
-    { name: "Facebook", emp: 3000, img: "./../../public/company-3.svg" },
-    { name: "Dribble", emp: 65, img: "./../../public/company-1.svg" },
-    { name: "Paypal", emp: 6000, img: "./../../public/company-4.svg" },
-    { name: "Spotify", emp: 2000, img: "./../../public/company-5.svg" },
-    { name: "Slack", emp: 2000, img: "./../../public/company-6.svg" },
+    {
+      name: "Facebook",
+      emp: 3000,
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b1e2eb44249_Facebook%20Icon.svg",
+    },
+    {
+      name: "Dribble",
+      emp: 65,
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b342eb4424d_Dribble%20Icon.svg",
+    },
+    {
+      name: "Paypal",
+      emp: 6000,
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b775fb4424c_PayPal%20Icon.svg",
+    },
+    {
+      name: "Spotify",
+      emp: 2000,
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b6942b4424b_Spotify%20Icon.svg",
+    },
+    {
+      name: "Slack",
+      emp: 2000,
+      img: "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8bb874b4424a_Slack%20Icon.svg",
+    },
   ]);
 
   type blogsType = {
@@ -445,9 +465,19 @@ const Home = () => {
                       >
                         {" "}
                         <img
-                          src={`../../public/company-${
-                            randomCompanyImages[Math.floor(index / 16)]
-                          }.svg`}
+                          src={
+                            randomCompanyImages[Math.floor(index / 16)] == 1
+                              ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b342eb4424d_Dribble%20Icon.svg"
+                              : randomCompanyImages[Math.floor(index / 16)] > 1
+                              ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b775fb4424c_PayPal%20Icon.svg"
+                              : randomCompanyImages[Math.floor(index / 16)] > 4
+                              ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b6942b4424b_Spotify%20Icon.svg"
+                              : randomCompanyImages[Math.floor(index / 16)] > 8
+                              ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8bb874b4424a_Slack%20Icon.svg"
+                              : randomCompanyImages[Math.floor(index / 16)] > 12
+                              ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b1e2eb44249_Facebook%20Icon.svg"
+                              : ""
+                          }
                           className="
                       w-[70%] object-cover"
                         />

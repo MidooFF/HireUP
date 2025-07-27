@@ -30,7 +30,19 @@ const Job = ({
         >
           {" "}
           <img
-            src={`../../public/company-${img}.svg`}
+            src={
+              img == 1
+                ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b342eb4424d_Dribble%20Icon.svg"
+                : img == 2
+                ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b775fb4424c_PayPal%20Icon.svg"
+                : img == 3
+                ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b6942b4424b_Spotify%20Icon.svg"
+                : img == 4
+                ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8bb874b4424a_Slack%20Icon.svg"
+                : img == 5
+                ? "https://cdn.prod.website-files.com/63337525695d8b8aebb4423f/63337525695d8b1e2eb44249_Facebook%20Icon.svg"
+                : ""
+            }
             className="
                         w-[70%] object-cover"
           />

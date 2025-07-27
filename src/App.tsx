@@ -1,10 +1,8 @@
 import { createContext } from "react";
 import useFetch from "./hooks/useFetch";
 import "./App.css";
-import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar.tsx";
 import About from "./pages/About/About.tsx";
 import Browse from "./pages/Browse/Browse.tsx";
 import Blog from "./pages/Blog/Blog.tsx";
